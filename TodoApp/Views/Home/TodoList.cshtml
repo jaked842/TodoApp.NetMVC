@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TodoApp.Models.Todo>
+@{
+    ViewData["Title"] = "TodoList";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Todo List</h1>
+</div>
+<br />
+<br />
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Todo Item</th>
+            <th scope="col">Assigned Person</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <th scope="row">@item.Id</th>
+            <td>@item.TodoName</td>
+            <td>@item.AssignedPerson</td>
+            <td><a class="btn btn-outline-dark" asp-controller="Home" asp-action="EditPage" asp-route-Id="@item.Id">Edit</a></td>
+            <td><a class="btn btn-danger" asp-controller="Home" asp-action="DeletePage" asp-route-Id="@item.Id">Delete</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a class="btn-primary btn" asp-controller="Home" asp-action="Create">Add New Todo</a>

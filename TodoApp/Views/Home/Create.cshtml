@@ -1,0 +1,14 @@
+﻿@model TodoApp.Models.Todo
+
+<form method="post" asp-action="Create">
+    <div class="form-group">
+        <label asp-for="TodoName"></label>
+        <input type="text" class="form-control" placeholder="Enter Todo Item" asp-for="TodoName">
+    </div>
+    <div class="form-group">
+        <label asp-for="AssignedPerson">Assigned Person</label>
+        <input asp-for="AssignedPerson" type="text" class="form-control" placeholder="Enter Assigned Person">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-action="TodoList" class="btn btn-secondary">Back</a>
+</form>
