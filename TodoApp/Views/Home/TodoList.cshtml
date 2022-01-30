@@ -14,6 +14,12 @@
         @TempData["Success"]
     </div>
 }
+<form asp-controller="Home" asp-action="TodoList">
+    <div class="form-inline" style="margin-bottom:10px">
+        <input type="text" class="form-control-sm" placeholder="Enter seach item" name="searchItem" />
+        <button type="submit" class="btn btn-primary btn-sm btn" style="margin-left:5px">Search</button>
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>

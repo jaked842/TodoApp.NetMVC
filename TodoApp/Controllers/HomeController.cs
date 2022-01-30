@@ -26,10 +26,20 @@ namespace TodoApp.Controllers
             return View();
         }
 
-        public IActionResult TodoList()
+        public IActionResult TodoList(string searchItem)
         {
-           var Todos = _dbContext.Todo.ToList();
-            return View(Todos);
+            if (string.IsNullOrEmpty(searchItem))
+            {
+                var Todos = _dbContext.Todo.ToList();
+                return View(Todos);
+            }
+            else
+            {
+                var TodosSearched = _dbContext.Todo.Where(
+                (todo) => todo.TodoName.Contains(searchItem) || todo.AssignedPerson.Contains(searchItem)).ToList();
+                return View(TodosSearched);
+            }
+
         }
         
         public IActionResult Create()
